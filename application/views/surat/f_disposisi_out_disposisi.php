@@ -121,22 +121,27 @@ if ($mode == "edt" || $mode == "act_edt") {
 				<div class="col-lg-9">	
 					<div class="alert alert-info"><b>Data Disposisi <?php echo $admin_id_unit; ?></b></div>
 					<table  class="table-form">
-					<tr><td width="20%">Penerima</td><td><select name="penerima" id="penerima" class="form-control col-lg-6" required tabindex="1" autofocus><?php echo select_unit_aktif($admin_id_unit); ?></select> 
+					<tr>
+						<td width="20%">Penerima</td>
+						<td>
+							<select name="penerima" id="penerima" class="form-control col-lg-6" required tabindex="1" autofocus><?php echo select_unit_aktif($admin_id_unit); ?></select> 
 					
-					<div class="col-lg-2" style="margin-top: 10px">User</div>
-					<select name="user" id="user" class="form-control col-lg-4" required tabindex="1">
-						<?php 
-						if (!empty($user)) {
-							foreach ($user as $u) {
-								if ($u->id != $this->session->userdata('admin_id')) {
-									echo "<option value='".$u->id."' class='".$u->id_unit."'>".$u->username." (".$u->level.")</option>";
-								} else {
-									echo "<option value='".$u->id."' class='".$u->id_unit."'>Saya (".$u->level.")</option>";
+							<div class="col-lg-2" style="margin-top: 10px">User</div>
+							<select name="user" id="user" class="form-control col-lg-4" required tabindex="1">
+								<?php 
+								if (!empty($user)) {
+									foreach ($user as $u) {
+										if ($u->id != $this->session->userdata('admin_id')) {
+											echo "<option value='".$u->id."' class='".$u->id_unit."'>".$u->jabatan." (".$u->username.")</option>";
+										} else {
+											echo "<option value='".$u->id."' class='".$u->id_unit."'>Saya (".$u->level.")</option>";
+										}
+									}
 								}
-							}
-						}
-						?>
-					</select></td></tr>
+								?>
+							</select>
+						</td>
+					</tr>
 					
 					<tr><td>Intruksi</td><td><select name="intruksi" class="form-control col-lg-12" tabindex="9"><?php echo select_array($pil_intruksi, $pil_intruksi); ?></select></td></tr>	
 					<tr><td>Isi Disposisi</td><td><textarea name="isi_disposisi" class="form-control col-lg-12" tabindex="2" style="height: 70px"></textarea></td></tr>	
